@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D1LDONS TEAM | CS2</title>
+    <style>
+        /* Базовые настройки */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #050505; /* Почти черный фон */
+            color: #ffffff; /* Белый текст */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Шапка сайта */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 2px solid #ffffff;
+            background: linear-gradient(180deg, #1a1a1a 0%, #050505 100%);
+        }
+
+        /* Настройки логотипа */
+        .logo {
+            width: 150px; 
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 2px solid #333;
+            border-radius: 50%; /* Круглый логотип */
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.15); /* Легкое свечение */
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05); /* Увеличение при наведении */
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.2);
+        }
+
+        .subtitle {
+            color: #aaaaaa;
+            font-size: 1.2em;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Основной блок */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h2 {
+            font-size: 2em;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        /* Блок с составом (Ростер) */
+        .roster-section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .roster-section h2 {
+            text-transform: uppercase;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #333;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .roster-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Карточка игрока */
+        .player-card {
+            background-color: #111111;
+            border: 2px solid #333333;
+            width: 200px;
+            padding: 30px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* Выделение капитана */
+        .player-card.captain {
+            border-color: #ffffff;
+            background-color: #1a1a1a;
+        }
+
+        .player-card:hover {
+            border-color: #ffffff;
+            background-color: #ffffff;
+            color: #000000;
+            transform: translateY(-10px);
+        }
+
+        .player-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.5em;
+            text-transform: uppercase;
+        }
+
+        .player-card p {
+            margin: 0;
+            font-size: 0.9em;
+            color: inherit;
+            opacity: 0.8;
+            font-weight: bold;
+        }
+
+        /* Подвал */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            border-top: 1px solid #333;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header>
+        <img src="image.png" alt="D1LDONS TEAM Logo" class="logo">
+        <h1>D1LDONS TEAM</h1>
+        <div class="subtitle">Counter-Strike 2 Roster</div>
+    </header>
+
+    <!-- Приветственный блок -->
+    <section class="hero">
+        <h2>Добро пожаловать на нашу территорию</h2>
+        <p>Мы — амбициозная команда по CS2. Наша цель — командная работа, жесткий аим и доминация на сервере. Следите за нашими матчами и болейте за нас!</p>
+    </section>
+
+    <!-- Состав команды -->
+    <section class="roster-section">
+        <h2>Наш состав</h2>
+        <div class="roster-container">
+            
+            <div class="player-card">
+                <h3>Kiporiss</h3>
+                <p>Lurker</p>
+            </div>
+            
+            <div class="player-card">
+                <h3>Hell7Staf</h3>
+                <p>Rifler</p>
+            </div>
+            
+            <div class="player-card captain">
+                <h3>От4им</h3>
+                <p>Капитан (IGL) 👑</p>
+            </div>
+            
+            <div class="player-card">
+                <h3>Toto</h3>
+                <p>Entry Fragger</p>
+            </div>
+            
+            <div class="player-card">
+                <h3>Voskex</h3>
+                <p>AWPer</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Подвал сайта -->
+    <footer>
+        &copy; 2026 D1LDONS TEAM. Все права защищены.
+    </footer>
+
+</body>
+</html>
