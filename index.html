@@ -286,32 +286,32 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const themeSwitcher = document.getElementById('theme-switcher');
-            const body = document.body;
-            const logo = document.querySelector('.logo');
+    document.addEventListener('DOMContentLoaded', () => {
+        const themeSwitcher = document.getElementById('theme-switcher');
+        const body = document.body;
+        const logo = document.querySelector('.logo');
 
-            // Названия твоих файлов изображений (замени на реальные, если они есть)
-            const darkLogo = 'image.png'; 
-            const lightLogo = 'logo_white.png'; // Предполагаем, что есть светлый лого
+        // Названия твоих файлов изображений
+        const darkLogo = 'image.png';      // Лого для темной темы
+        const lightLogo = 'logo_white.png'; // Лого для светлой темы
 
-            // Проверка сохраненной темы
-            if (localStorage.getItem('theme') === 'light') {
-                body.classList.add('light-theme');
-                // logo.src = lightLogo; // Раскомментируй, если есть файл
-            }
+        // Проверка сохраненной темы при загрузке страницы
+        if (localStorage.getItem('theme') === 'light') {
+            body.classList.add('light-theme');
+            logo.src = lightLogo; // Убрали // здесь
+        }
 
-            themeSwitcher.addEventListener('click', () => {
-                body.classList.toggle('light-theme');
-                const isLight = body.classList.contains('light-theme');
-                
-                // Смена логотипа (раскомментируй, если есть файлы)
-                // logo.src = isLight ? lightLogo : darkLogo; 
-                
-                // Сохранение выбора в браузере
-                localStorage.setItem('theme', isLight ? 'light' : 'dark');
-            });
+        themeSwitcher.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            const isLight = body.classList.contains('light-theme');
+            
+            // Смена логотипа при клике
+            logo.src = isLight ? lightLogo : darkLogo; // Убрали // здесь
+            
+            // Сохранение выбора в браузере
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
         });
-    </script>
+    });
+</script>
 </body>
 </html>
