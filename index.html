@@ -47,6 +47,28 @@
 
             /* Цвет точек для СВЕТЛОЙ темы (делаем их темными) */
             --dot-color: rgba(0, 0, 0, 0.7); 
+            .steam-link-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 18px;
+    background-color: var(--steam-color);
+    color: #ffffff !important;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: transform 0.2s, background 0.3s;
+    cursor: pointer;
+}
+
+.steam-link-button:hover {
+    background-color: var(--tg-color);
+    transform: scale(1.1);
+}
+
+.player-card {
+    cursor: default; /* Сама карточка не кликабельна, только кнопка внутри */
         }
 
         html { scroll-behavior: smooth; }
@@ -271,64 +293,68 @@
     <h2>Наш состав</h2>
     <div class="roster-container">
         
-        <a href="https://steamcommunity.com/profiles/76561199788032731" target="_blank" class="player-link">
-            <div class="player-card">
-                <h3>Kiporiss</h3>
-                <p style="margin:0; font-weight:bold;">Lurker</p>
-                <div class="player-info-extra">
-                    Опытный игрок, мастер скрытных атак и перетяжек.
-                    <br><span class="steam-link-text">Профиль Steam</span>
-                </div>
+        <div class="player-card">
+            <h3>Kiporiss</h3>
+            <p style="margin:0; font-weight:bold;">AWPer</p>
+            <div class="player-info-extra">
+                Главная огневая мощь и точные выстрелы из снайперской винтовки.
+                <br>
+                <a href="https://steamcommunity.com/profiles/76561199788032731" target="_blank" class="steam-link-button">
+                    Профиль Steam
+                </a>
             </div>
-        </a>
+        </div>
 
-        <a href="https://steamcommunity.com/profiles/76561199508602143" target="_blank" class="player-link">
-            <div class="player-card">
-                <h3>Hell7Staf</h3>
-                <p style="margin:0; font-weight:bold;">Rifler</p>
-                <div class="player-info-extra">
-                    Мастер энтри-фрагов и контроля спрея. 
-                    <br><span class="steam-link-text">Профиль Steam</span>
-                </div>
+        <div class="player-card">
+            <h3>Hell7Staf</h3>
+            <p style="margin:0; font-weight:bold;">Rifler</p>
+            <div class="player-info-extra">
+                Мастер энтри-фрагов и идеального контроля спрея.
+                <br>
+                <a href="https://steamcommunity.com/profiles/76561199508602143" target="_blank" class="steam-link-button">
+                    Профиль Steam
+                </a>
             </div>
-        </a>
+        </div>
 
-        <a href="https://steamcommunity.com/id/DST_Ot4Im" target="_blank" class="player-link">
-            <div class="player-card captain">
-                <h3>От4Им</h3>
-                <p style="margin:0; font-weight:bold;">Капитан (IGL)</p>
-                <div class="player-info-extra">
-                    Тактический гений и лидер команды.
-                    <br><span class="steam-link-text">Профиль Steam</span>
-                </div>
+        <div class="player-card captain">
+            <h3>От4Им</h3>
+            <p style="margin:0; font-weight:bold;">Капитан (IGL)</p>
+            <div class="player-info-extra">
+                Тактический мозг команды и координатор действий.
+                <br>
+                <a href="https://steamcommunity.com/id/DST_Ot4Im" target="_blank" class="steam-link-button">
+                    Профиль Steam
+                </a>
             </div>
-        </a>
+        </div>
 
-        <a href="https://steamcommunity.com/profiles/76561199169413562" target="_blank" class="player-link">
-            <div class="player-card">
-                <h3>Toto</h3>
-                <p style="margin:0; font-weight:bold;">Anchor</p>
-                <div class="player-info-extra">
-                    Железобетонная защита любой позиции.
-                    <br><span class="steam-link-text">Профиль Steam</span>
-                </div>
+        <div class="player-card">
+            <h3>Toto</h3>
+            <p style="margin:0; font-weight:bold;">Anchor</p>
+            <div class="player-info-extra">
+                Главный якорь команды.
+                <br>
+                <a href="https://steamcommunity.com/profiles/76561199169413562" target="_blank" class="steam-link-button">
+                    Профиль Steam
+                </a>
             </div>
-        </a>
+        </div>
 
-        <a href="https://steamcommunity.com/profiles/76561199191190126" target="_blank" class="player-link">
-            <div class="player-card">
-                <h3>Voskex</h3>
-                <p style="margin:0; font-weight:bold;">AWPer</p>
-                <div class="player-info-extra">
-                    Главная огневая мощь и точные выстрелы.
-                    <br><span class="steam-link-text">Профиль Steam</span>
-                </div>
+        <div class="player-card">
+            <h3>Voskex</h3>
+            <p style="margin:0; font-weight:bold;">Lurker</p>
+            <div class="player-info-extra">
+                Мастер скрытных перемещений и заходов в спину противнику.
+                <br>
+                <a href="https://steamcommunity.com/profiles/76561199191190126" target="_blank" class="steam-link-button">
+                    Профиль Steam
+                </a>
             </div>
-        </a>
+        </div>
 
     </div>
 </section>
-
     <section id="highlights">
         <h2>Лучшие моменты</h2>
         <div class="highlights-grid">
