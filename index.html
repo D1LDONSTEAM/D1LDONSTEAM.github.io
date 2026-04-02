@@ -12,7 +12,6 @@
             --bg-color: #050505;
             --text-color: #ffffff;
             --header-bg: rgba(5, 5, 5, 0.1); /* Почти прозрачный черный */
-    --header-border: rgba(255, 255, 255, 0.1); /* Еле заметная линия снизу */
             --card-bg: rgba(17, 17, 17, 0.9); /* Чуть больше непрозрачности для читаемости */
             --card-border: #333333;
             --card-hover-bg: #ffffff;
@@ -27,7 +26,7 @@
             --steam-color: #171a21;
 
             /* Цвет точек для ТЕМНОЙ темы */
-            --dot-color: rgba(255, 255, 255, 0.7); 
+            --dot-color: rgba(255, 255, 255, 0.4); 
         }
 
         body.light-theme {
@@ -118,7 +117,6 @@
             padding: 60px 20px; 
             border-bottom: 2px solid var(--header-border); 
             background: var(--header-bg); 
-            backdrop-filter: blur(10px); /* Эффект размытия фона за шапкой */
             position: relative;
             z-index: 2;
         }
