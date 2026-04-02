@@ -242,6 +242,33 @@
         document.addEventListener('DOMContentLoaded', () => {
             const themeSwitcher = document.getElementById('theme-switcher');
             const body = document.body;
+            const logo = document.querySelector('.logo'); // Находим логотип
+
+            // Пути к логотипам
+            const darkLogo = 'image.png';       // Твой оригинальный темный лого
+            const lightLogo = 'logo_white.png';   // Сгенерированный белый лого
+
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                body.classList.add('light-theme');
+                logo.src = lightLogo; // Устанавливаем белый лого при загрузке
+            }
+
+            themeSwitcher.addEventListener('click', () => {
+                body.classList.toggle('light-theme');
+                if (body.classList.contains('light-theme')) {
+                    localStorage.setItem('theme', 'light');
+                    logo.src = lightLogo; // Меняем на белый лого
+                } else {
+                    localStorage.removeItem('theme');
+                    logo.src = darkLogo;  // Возвращаем темный лого
+                }
+            });
+        });
+    </script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeSwitcher = document.getElementById('theme-switcher');
+            const body = document.body;
             if (localStorage.getItem('theme') === 'light') body.classList.add('light-theme');
             themeSwitcher.addEventListener('click', () => {
                 body.classList.toggle('light-theme');
