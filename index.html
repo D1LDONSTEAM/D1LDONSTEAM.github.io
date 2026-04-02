@@ -266,15 +266,5 @@
             });
         });
     </script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const themeSwitcher = document.getElementById('theme-switcher');
-            const body = document.body;
-            if (localStorage.getItem('theme') === 'light') body.classList.add('light-theme');
-            themeSwitcher.addEventListener('click', () => {
-                body.classList.toggle('light-theme');
-                localStorage.setItem('theme', body.classList.contains('light-theme') ? 'light' : 'dark');
-            });
-        });
-    </script>
 </body>
 </html>
