@@ -7,19 +7,17 @@
     <link rel="icon" href="image.png" type="image/png"> 
     
     <style>
-        /* Твои стили... */
-        /* Твои стили... */
         /* --- ПЕРЕМЕННЫЕ И ТЕМЫ --- */
         :root {
             --bg-color: #050505;
             --text-color: #ffffff;
-            --header-bg: linear-gradient(180deg, #1a1a1a 0%, #050505 100%);
+            --header-bg: linear-gradient(180deg, #1a1a1a 0%, rgba(5,5,5,0.8) 100%);
             --header-border: #ffffff;
-            --card-bg: #111111;
+            --card-bg: rgba(17, 17, 17, 0.9); /* Чуть больше непрозрачности для читаемости */
             --card-border: #333333;
             --card-hover-bg: #ffffff;
             --card-hover-text: #000000;
-            --captain-card-bg: #1a1a1a;
+            --captain-card-bg: rgba(26, 26, 26, 0.95);
             --captain-card-border: #ffffff;
             --subtitle-color: #aaaaaa;
             --logo-shadow: rgba(255, 255, 255, 0.15);
@@ -27,23 +25,29 @@
             --footer-text: #666;
             --tg-color: #24A1DE;
             --steam-color: #171a21;
+
+            /* Цвет точек для ТЕМНОЙ темы */
+            --dot-color: rgba(255, 255, 255, 0.2); 
         }
 
         body.light-theme {
             --bg-color: #f4f4f4;
             --text-color: #000000;
-            --header-bg: linear-gradient(180deg, #ffffff 0%, #e9ecef 100%);
+            --header-bg: linear-gradient(180deg, #ffffff 0%, rgba(233,236,239,0.8) 100%);
             --header-border: #dee2e6;
-            --card-bg: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.9);
             --card-border: #dee2e6;
             --card-hover-bg: #000000;
             --card-hover-text: #ffffff;
-            --captain-card-bg: #f8f9fa;
+            --captain-card-bg: rgba(248, 249, 250, 0.95);
             --captain-card-border: #000000;
             --subtitle-color: #6c757d;
             --logo-shadow: rgba(0, 0, 0, 0.1);
             --footer-border: #dee2e6;
             --footer-text: #6c757d;
+
+            /* Цвет точек для СВЕТЛОЙ темы (делаем их темными) */
+            --dot-color: rgba(0, 0, 0, 0.1); 
         }
 
         html { scroll-behavior: smooth; }
@@ -54,7 +58,35 @@
             margin: 0;
             padding: 0;
             transition: background-color 0.3s, color 0.3s;
+            position: relative;
+            overflow-x: hidden;
         }
+
+        /* --- НОВЫЙ АНИМИРОВАННЫЙ ФОН ИЗ ТОЧЕК --- */
+        .bg-dots {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Строго под контентом */
+            pointer-events: none; /* Чтобы не мешал кликам */
+            
+            /* Создаем паттерн из точек с помощью radial-gradient */
+            background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+            background-size: 30px 30px; /* Расстояние между точками */
+            
+            /* Анимация движения */
+            animation: moveDots 60s linear infinite;
+            opacity: 0.8; /* Общая прозрачность фона */
+        }
+
+        /* Описание движения точек (медленно плывут по диагонали) */
+        @keyframes moveDots {
+            from { background-position: 0 0; }
+            to { background-position: 1000px 1000px; }
+        }
+        /* ------------------------------------------- */
 
         /* Кнопка темы */
         .theme-switcher {
@@ -74,13 +106,22 @@
             align-items: center;
             transition: 0.3s;
             z-index: 1000;
+            backdrop-filter: blur(5px);
         }
         .theme-switcher .icon-moon { display: none; }
         .light-theme .theme-switcher .icon-sun { display: none; }
         .light-theme .theme-switcher .icon-moon { display: block; }
 
         /* Шапка */
-        header { text-align: center; padding: 60px 20px; border-bottom: 2px solid var(--header-border); background: var(--header-bg); }
+        header { 
+            text-align: center; 
+            padding: 60px 20px; 
+            border-bottom: 2px solid var(--header-border); 
+            background: var(--header-bg); 
+            backdrop-filter: blur(10px); /* Эффект размытия фона за шапкой */
+            position: relative;
+            z-index: 2;
+        }
         .logo { width: 150px; height: 150px; border-radius: 50%; border: 2px solid #333; box-shadow: 0 0 15px var(--logo-shadow); margin-bottom: 20px; transition: 0.3s; }
         h1 { font-size: 3.5em; margin: 0; letter-spacing: 5px; text-transform: uppercase; }
         .subtitle { color: var(--subtitle-color); text-transform: uppercase; letter-spacing: 2px; font-size: 1.1em; }
@@ -90,19 +131,41 @@
         nav a:hover { opacity: 1; color: var(--tg-color); }
 
         /* Секции */
-        section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; text-align: center; }
+        section { 
+            padding: 80px 20px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            text-align: center; 
+            position: relative;
+            z-index: 1; /* Контент поверх точек */
+        }
         h2 { font-size: 2.5em; text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--footer-border); display: inline-block; padding-bottom: 10px; }
 
         /* Игроки */
         .roster-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; }
         .player-link { text-decoration: none; color: inherit; }
-        .player-card { background-color: var(--card-bg); border: 2px solid var(--card-border); width: 200px; padding: 30px 15px; border-radius: 8px; transition: 0.3s; }
-        .player-card:hover { background-color: var(--card-hover-bg); color: var(--card-hover-text); transform: translateY(-10px); }
+        .player-card { 
+            background-color: var(--card-bg); 
+            border: 2px solid var(--card-border); 
+            width: 200px; 
+            padding: 30px 15px; 
+            border-radius: 8px; 
+            transition: 0.3s; 
+            backdrop-filter: blur(5px); /* Размытие точек под карточкой */
+        }
+        .player-card:hover { background-color: var(--card-hover-bg); color: var(--card-hover-text); transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
         .player-card.captain { border-color: var(--captain-card-border); background-color: var(--captain-card-bg); }
 
         /* Хайлайты */
         .highlights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .video-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; overflow: hidden; transition: 0.3s; }
+        .video-card { 
+            background: var(--card-bg); 
+            border: 1px solid var(--card-border); 
+            border-radius: 12px; 
+            overflow: hidden; 
+            transition: 0.3s; 
+            backdrop-filter: blur(5px); 
+        }
         .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; background: #000; }
         .video-wrapper video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
         .video-info { padding: 15px; text-align: left; }
@@ -121,7 +184,15 @@
         .social-btn:hover { transform: translateY(-5px); filter: brightness(1.1); }
 
         /* Футер */
-        footer { padding: 40px; text-align: center; border-top: 1px solid var(--footer-border); color: var(--footer-text); }
+        footer { 
+            padding: 40px; 
+            text-align: center; 
+            border-top: 1px solid var(--footer-border); 
+            color: var(--footer-text); 
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(10px);
+        }
         .footer-link { color: inherit; text-decoration: none; transition: 0.3s; }
         .footer-link:hover { text-decoration: underline; opacity: 0.8; }
 
@@ -129,6 +200,8 @@
     </style>
 </head>
 <body>
+
+    <div class="bg-dots"></div>
 
     <button id="theme-switcher" class="theme-switcher">
         <span class="icon-sun">☀️</span>
@@ -156,7 +229,7 @@
                 <div class="player-card"><h3>Hell7Staf</h3><p>Rifler</p></div>
             </a>
             <a href="https://steamcommunity.com/id/DST_Ot4Im" target="_blank" class="player-link">
-                <div class="player-card captain"><h3>От4Им</h3><p>Капитан (IGL) </p></div>
+                <div class="player-card captain"><h3>От4Им</h3><p>Капитан (IGL)</p></div>
             </a>
             <a href="https://steamcommunity.com/profiles/76561199169413562" target="_blank" class="player-link">
                 <div class="player-card"><h3>Toto</h3><p>Anchor(Якорь)</p></div>
@@ -167,7 +240,7 @@
         </div>
     </section>
 
-    <section id="highlights" style="background: rgba(128,128,128,0.03);">
+    <section id="highlights">
         <h2>Лучшие моменты</h2>
         <div class="highlights-grid">
             <div class="video-card">
@@ -203,13 +276,12 @@
     </section>
 
     <footer>
-        &copy; 2026 D1LDONS TEAM.Все права защищены.
+        &copy; 2026 D1LDONS TEAM. Все права защищены.
         <div style="margin-bottom: 10px;">
         </div>
         <div style="font-size: 0.85em; opacity: 0.7;">
             Дизайн и разработка: 
-                <b>Hell7staf&От4Им</b>
-            </a>
+                <b>Hell7staf & От4Им</b>
         </div>
     </footer>
 
@@ -219,19 +291,24 @@
             const body = document.body;
             const logo = document.querySelector('.logo');
 
-            // Названия твоих файлов изображений
+            // Названия твоих файлов изображений (замени на реальные, если они есть)
             const darkLogo = 'image.png'; 
-            const lightLogo = 'logo_white.png';
+            const lightLogo = 'logo_white.png'; // Предполагаем, что есть светлый лого
 
+            // Проверка сохраненной темы
             if (localStorage.getItem('theme') === 'light') {
                 body.classList.add('light-theme');
-                logo.src = lightLogo;
+                // logo.src = lightLogo; // Раскомментируй, если есть файл
             }
 
             themeSwitcher.addEventListener('click', () => {
                 body.classList.toggle('light-theme');
                 const isLight = body.classList.contains('light-theme');
-                logo.src = isLight ? lightLogo : darkLogo;
+                
+                // Смена логотипа (раскомментируй, если есть файлы)
+                // logo.src = isLight ? lightLogo : darkLogo; 
+                
+                // Сохранение выбора в браузере
                 localStorage.setItem('theme', isLight ? 'light' : 'dark');
             });
         });
