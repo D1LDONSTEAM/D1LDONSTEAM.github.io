@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D1LDONS TEAM | CS2</title>
+    <title>D1LDONS TEAM | CS2 Official</title>
     <style>
-        /* --- ОБЩИЕ НАСТРОЙКИ (из твоего оригинала) --- */
+        /* --- ПЕРЕМЕННЫЕ И ТЕМЫ --- */
         :root {
             --bg-color: #050505;
             --text-color: #ffffff;
@@ -15,14 +15,14 @@
             --card-border: #333333;
             --card-hover-bg: #ffffff;
             --card-hover-text: #000000;
-            --card-hover-border: #ffffff;
             --captain-card-bg: #1a1a1a;
             --captain-card-border: #ffffff;
             --subtitle-color: #aaaaaa;
             --logo-shadow: rgba(255, 255, 255, 0.15);
             --footer-border: #333;
             --footer-text: #666;
-            --tg-blue: #24A1DE;
+            --tg-color: #24A1DE;
+            --steam-color: #1b2838;
         }
 
         body.light-theme {
@@ -34,7 +34,6 @@
             --card-border: #dee2e6;
             --card-hover-bg: #000000;
             --card-hover-text: #ffffff;
-            --card-hover-border: #000000;
             --captain-card-bg: #f8f9fa;
             --captain-card-border: #000000;
             --subtitle-color: #6c757d;
@@ -61,7 +60,7 @@
             background: var(--card-bg);
             color: var(--text-color);
             border: 2px solid var(--card-border);
-            border-radius: 30px;
+            border-radius: 50%;
             width: 50px;
             height: 50px;
             cursor: pointer;
@@ -78,7 +77,6 @@
 
         /* Шапка */
         header {
-            position: relative;
             text-align: center;
             padding: 60px 20px;
             border-bottom: 2px solid var(--header-border);
@@ -86,15 +84,16 @@
         }
         .logo {
             width: 150px; height: 150px;
-            border: 2px solid #333;
             border-radius: 50%;
+            border: 2px solid #333;
             box-shadow: 0 0 15px var(--logo-shadow);
             margin-bottom: 20px;
+            transition: transform 0.3s ease;
         }
-        h1 { font-size: 3.5em; margin: 0; text-transform: uppercase; letter-spacing: 5px; }
+        h1 { font-size: 3.5em; margin: 0; letter-spacing: 5px; text-transform: uppercase; }
+        .subtitle { color: var(--subtitle-color); text-transform: uppercase; letter-spacing: 2px; }
 
-        /* Навигация */
-        nav { margin-top: 20px; }
+        nav { margin-top: 25px; }
         nav a {
             color: var(--text-color);
             text-decoration: none;
@@ -102,63 +101,55 @@
             font-weight: bold;
             text-transform: uppercase;
             font-size: 0.9em;
+            opacity: 0.7;
             transition: 0.3s;
         }
-        nav a:hover { color: var(--tg-blue); }
+        nav a:hover { opacity: 1; color: var(--tg-color); }
 
-        /* Стили секций */
-        section { padding: 80px 20px; text-align: center; max-width: 1200px; margin: 0 auto; }
+        /* Секции */
+        section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; text-align: center; }
         h2 { font-size: 2.5em; text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--footer-border); display: inline-block; padding-bottom: 10px; }
 
-        /* Карточки игроков (из оригинала) */
+        /* Состав */
         .roster-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; }
         .player-link { text-decoration: none; color: inherit; }
         .player-card {
             background-color: var(--card-bg);
             border: 2px solid var(--card-border);
             width: 200px; padding: 30px 15px;
-            border-radius: 8px; transition: all 0.3s ease;
+            border-radius: 8px; transition: 0.3s ease;
         }
         .player-card:hover {
-            border-color: var(--card-hover-border);
             background-color: var(--card-hover-bg);
             color: var(--card-hover-text);
             transform: translateY(-10px);
         }
         .player-card.captain { border-color: var(--captain-card-border); background-color: var(--captain-card-bg); }
 
-        /* --- БЛОК ХАЙЛАЙТОВ (ЛОКАЛЬНЫЙ) --- */
-        .highlights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
-        .video-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: 0.3s;
-        }
+        /* Хайлайты (Локальные) */
+        .highlights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .video-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; overflow: hidden; transition: 0.3s; }
         .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; background: #000; }
         .video-wrapper video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
         .video-info { padding: 15px; text-align: left; }
-        .video-info h3 { margin: 0; font-size: 1.1em; }
-        .video-info p { margin: 5px 0 0; font-size: 0.85em; color: var(--subtitle-color); }
 
-        /* --- БЛОК ТЕЛЕГРАМ --- */
-        .tg-section { padding-top: 40px; }
-        .tg-button {
+        /* Соцсети */
+        .social-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 20px; }
+        .social-btn {
             display: inline-flex; align-items: center; gap: 12px;
-            background-color: var(--tg-blue); color: #fff !important;
-            text-decoration: none; padding: 18px 35px; border-radius: 50px;
+            color: #ffffff !important; text-decoration: none;
+            padding: 18px 35px; border-radius: 50px;
             font-weight: bold; transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(36, 161, 222, 0.3);
         }
-        .tg-button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(36, 161, 222, 0.5); }
-        .tg-button svg { width: 24px; height: 24px; fill: white; }
+        .social-btn svg { width: 24px; height: 24px; fill: white; }
+        .social-btn.tg { background-color: var(--tg-color); box-shadow: 0 4px 15px rgba(36, 161, 222, 0.3); }
+        .social-btn.steam { background-color: var(--steam-color); box-shadow: 0 4px 15px rgba(27, 40, 56, 0.3); }
+        .social-btn:hover { transform: translateY(-3px); opacity: 0.9; }
 
-        footer { text-align: center; padding: 40px; border-top: 1px solid var(--footer-border); color: var(--footer-text); }
+        /* Футер */
+        footer { padding: 40px; text-align: center; border-top: 1px solid var(--footer-border); color: var(--footer-text); }
+        .footer-link { color: inherit; text-decoration: none; transition: 0.3s; }
+        .footer-link:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -169,13 +160,12 @@
     </button>
 
     <header>
-        <img src="image.png" alt="Logo" class="logo">
-        <h1>D1LDONS TEAM</h1>
-        <div class="subtitle">CS2 Roster & Highlights</div>
+        <img src="image.png" alt="Logo" class="logo"> <h1>D1LDONS TEAM</h1>
+        <div class="subtitle">Official CS2 Roster</div>
         <nav>
             <a href="#roster">Состав</a>
             <a href="#highlights">Моменты</a>
-            <a href="#telegram">Связь</a>
+            <a href="#social">Сообщество</a>
         </nav>
     </header>
 
@@ -207,62 +197,54 @@
                 <div class="video-wrapper">
                     <video controls><source src="video_1.mp4" type="video/mp4"></video>
                 </div>
-                <div class="video-info">
-                    <h3>От4им: AWP Triple kill</h3>
-                    <p>Map: Inferno | Season 2026</p>
-                </div>
+                <div class="video-info"><h3>От4им: AWP Triple kill</h3><p>Map: Inferno | 2026</p></div>
             </div>
             <div class="video-card">
                 <div class="video-wrapper">
                     <video controls><source src="video_2.mp4" type="video/mp4"></video>
                 </div>
-                <div class="video-info">
-                    <h3>Kiporiss: QUADRO KILL</h3>
-                    <p>Map: Dust II | Practice</p>
-                </div>
+                <div class="video-info"><h3>Kiporiss: QUADRO KILL</h3><p>Map: Dust II | Practice</p></div>
             </div>
         </div>
     </section>
 
-    <section id="telegram">
-        <h2>Следи за нами</h2>
-        <div class="tg-section">
-            <a href="https://t.me/DLST_Esport" target="_blank" class="tg-button">
+    <section id="social">
+        <h2>Присоединяйся к нам</h2>
+        <div class="social-container">
+            <a href="https://t.me/ТВОЯ_ССЫЛКА" target="_blank" class="social-btn tg">
                 <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-                Наш Telegram канал
+                Telegram Канал
+            </a>
+            <a href="https://steamcommunity.com/groups/ТВОЯ_ГРУППА" target="_blank" class="social-btn steam">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.8 14c-1.4 0-2.6-1.1-2.6-2.5 0-1.1.7-2 1.7-2.3l1.1-1.9c-.1-.1-.1-.2-.1-.3 0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2h-.3l-1.9 3.1c.1.3.2.6.2.9 0 1.4-1.1 2.5-2.5 2.5z"/></svg>
+                Группа Steam
             </a>
         </div>
     </section>
 
     <footer>
-        &copy; 2026 D1LDONS TEAM. Все права защищены.
+        &copy; 2026 D1LDONS TEAM. <a href="#" class="footer-link">Все права защищены.</a>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const themeSwitcher = document.getElementById('theme-switcher');
             const body = document.body;
-            const logo = document.querySelector('.logo'); // Находим логотип
+            const logo = document.querySelector('.logo');
 
-            // Пути к логотипам
-            const darkLogo = 'image.png';       // Твой оригинальный темный лого
-            const lightLogo = 'logo_white.png';   // Сгенерированный белый лого
+            const darkLogo = 'image.png';       //
+            const lightLogo = 'logo_white.png';
 
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'light') {
+            if (localStorage.getItem('theme') === 'light') {
                 body.classList.add('light-theme');
-                logo.src = lightLogo; // Устанавливаем белый лого при загрузке
+                logo.src = lightLogo;
             }
 
             themeSwitcher.addEventListener('click', () => {
                 body.classList.toggle('light-theme');
-                if (body.classList.contains('light-theme')) {
-                    localStorage.setItem('theme', 'light');
-                    logo.src = lightLogo; // Меняем на белый лого
-                } else {
-                    localStorage.removeItem('theme');
-                    logo.src = darkLogo;  // Возвращаем темный лого
-                }
+                const isLight = body.classList.contains('light-theme');
+                logo.src = isLight ? lightLogo : darkLogo;
+                localStorage.setItem('theme', isLight ? 'light' : 'dark');
             });
         });
     </script>
