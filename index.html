@@ -48,37 +48,37 @@
             /* Цвет точек для СВЕТЛОЙ темы (делаем их темными) */
             --dot-color: rgba(0, 0, 0, 0.7); 
             .steam-link-button {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 8px 18px;
-    background-color: var(--steam-color);
-    color: #ffffff !important;
-    text-decoration: none;
-    border-radius: 20px;
-    font-size: 0.85em;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: transform 0.2s, background 0.3s;
-    cursor: pointer;
+            --display: inline-block;
+            --margin-top: 15px;
+                --padding: 8px 18px;
+                --background-color: var(--steam-color);
+                --color: #ffffff !important;
+                --text-decoration: none;
+                --border-radius: 20px;
+                --font-size: 0.85em;
+                --font-weight: bold;
+                --text-transform: uppercase;
+                --transition: transform 0.2s, background 0.3s;
+                --cursor: pointer;
 }
 
 .steam-link-button:hover {
-    background-color: var(--tg-color);
-    transform: scale(1.1);
+    --background-color: var(--tg-color);
+    --transform: scale(1.1);
 }
 
 .player-card {
-    cursor: default; /* Сама карточка не кликабельна, только кнопка внутри */
+    --cursor: default; /* Сама карточка не кликабельна, только кнопка внутри */
         }
 
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.3s, color 0.3s;
+            --font-family: 'Arial', sans-serif;
+            --background-color: var(--bg-color);
+           -- color: var(--text-color);
+          --  margin: 0;
+           -- padding: 0;
+           -- transition: background-color 0.3s, color 0.3s;
             position: relative;
             overflow-x: hidden;
         }
